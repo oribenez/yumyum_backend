@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import productsRoutes from './routes/products-routes.js';
+import ordersRoutes from './routes/orders-routes.js';
+import shippingsRoutes from './routes/shippings-routes.js';
 import HttpError from './models/http-error.js';
 
 const app = express();
@@ -22,7 +24,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1', productsRoutes);
-// app.use('/api/v1', ordersRoutes);
+app.use('/api/v1', ordersRoutes);
+app.use('/api/v1', shippingsRoutes);
 
 // default error if route not handled
 app.use((error, req, res, next) => {
