@@ -1,0 +1,7 @@
+{
+	"env": {
+		"DB_USER": "oribenez",
+		"DB_PASSWORD": "oribenez",
+		"DB_NAME": "cookieMate"
+	}
+}
