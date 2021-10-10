@@ -49,7 +49,7 @@ mongoose
 		console.log('connected to db!');
 
 		// listen to requests
-		app.listen(5000);
+		app.listen(process.env.PORT || 5000);
 	})
 	.catch((err) => {
 		console.log('connection failed: ', err);
