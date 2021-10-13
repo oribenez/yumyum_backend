@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import productsRoutes from './routes/products-routes.js';
 import ordersRoutes from './routes/orders-routes.js';
 import shippingsRoutes from './routes/shippings-routes.js';
+import usersRoutes from './routes/users-routes.js';
 import HttpError from './models/http-error.js';
 
 const app = express();
@@ -23,9 +24,10 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use('/api/v1', productsRoutes);
-app.use('/api/v1', ordersRoutes);
-app.use('/api/v1', shippingsRoutes);
+app.use(`/api/${process.env.API_VERSION}`, productsRoutes);
+app.use(`/api/${process.env.API_VERSION}`, ordersRoutes);
+app.use(`/api/${process.env.API_VERSION}`, shippingsRoutes);
+app.use(`/api/${process.env.API_VERSION}/users`, usersRoutes);
 
 // default error if route not handled
 app.use((error, req, res, next) => {
@@ -54,6 +56,3 @@ mongoose
 	.catch((err) => {
 		console.log('connection failed: ', err);
 	});
-//.connect(
-// `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.93gb7.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-// )
