@@ -8,8 +8,8 @@ import { checkAuth } from "../middleware/check-auth.js";
 
 const router = express.Router();
 
-router.get("/products", getProducts);
-router.post("/products", createProduct);
+router.get("/", getProducts);
+router.post("/create", createProduct);
 
 //	Authorization check
 router.use(checkAuth);

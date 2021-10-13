@@ -14,17 +14,21 @@ dotenv.config();
 app.use(express.json());
 
 // Setting Headers to every response of the server
-app.use((req, res, next) => {
-	res.setHeader('Access-Control-Allow-Origin', '*'); // * => this is the domain
+app.use((req, res, next) => {console.log('headersSET1');
+	res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL); // * => this is the domain
+	res.setHeader('Access-Control-Allow-Credentials', 'true');
+	console.log('headersSET2');
 	res.setHeader(
 		'Access-Control-Allow-Headers',
 		'Origin, X-Requested-With, Content-Type, Accept, Authorization'
 	);
-	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+	console.log('headersSET3');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+	console.log('headersSET4');
 	next();
 });
 
-app.use(`/api/${process.env.API_VERSION}`, productsRoutes);
+app.use(`/api/${process.env.API_VERSION}/products`, productsRoutes);
 app.use(`/api/${process.env.API_VERSION}`, ordersRoutes);
 app.use(`/api/${process.env.API_VERSION}`, shippingsRoutes);
 app.use(`/api/${process.env.API_VERSION}/users`, usersRoutes);

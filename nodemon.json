@@ -3,6 +3,7 @@
 		"DB_USER": "oribenez",
 		"DB_PASSWORD": "oribenez",
 		"DB_NAME": "cookieMate",
-		"API_VERSION": "1.00"
+		"API_VERSION": "v1",
+		"FRONTEND_URL": "http://localhost:3000"
 	}
 }
