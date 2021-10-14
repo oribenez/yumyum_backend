@@ -36,10 +36,11 @@ const getUserByEmail = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
 	const { email, password } = req.body;
-
 	//  Check if user exists
 	let existingUser;
 	try {
+
+		console.log(email);
 		existingUser = await User.findOne({ email: email });
 	} catch (error) {
 		const err = new HttpError(
@@ -48,7 +49,7 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
-
+	
 	if (!existingUser) {
 		// User does not exists
 		const err = new HttpError(
@@ -61,6 +62,7 @@ export const login = async (req, res, next) => {
 	//  Check if password is correct
 	let isValidPassword = false;
 	try {
+
 		isValidPassword = await bcrypt.compare(password, existingUser.password);
 	} catch (error) {
 		const err = new HttpError(
@@ -77,6 +79,7 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
+	console.log('sav1');
 
     //  Create token
 	let token;
@@ -93,7 +96,7 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
-
+	console.log('sav2');
 	res.json({ userId: existingUser.id, email: existingUser.email, token: token });
 };
 
@@ -101,7 +104,6 @@ export const signup = async (req, res, next) => {
 	//  Validate req.body params
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
-		console.log(errors);
 		return next(
 			new HttpError("Invalid inputs passed, please check your data.", 422)
 		);
