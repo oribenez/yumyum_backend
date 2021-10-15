@@ -39,8 +39,6 @@ export const login = async (req, res, next) => {
 	//  Check if user exists
 	let existingUser;
 	try {
-
-		console.log(email);
 		existingUser = await User.findOne({ email: email });
 	} catch (error) {
 		const err = new HttpError(
@@ -53,7 +51,7 @@ export const login = async (req, res, next) => {
 	if (!existingUser) {
 		// User does not exists
 		const err = new HttpError(
-			"Invalid credentials, could not log you in.",
+			"User does not exist, please sign up.",
 			401
 		);
 		return next(err);
@@ -79,7 +77,6 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
-	console.log('sav1');
 
     //  Create token
 	let token;
@@ -96,7 +93,7 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
-	console.log('sav2');
+
 	res.json({ userId: existingUser.id, email: existingUser.email, token: token });
 };
 
