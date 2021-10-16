@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from 'cors';
 
 import productsRoutes from "./routes/products-routes.js";
 import ordersRoutes from "./routes/orders-routes.js";
@@ -23,6 +24,8 @@ app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
 	next();
 });
+
+app.use(cors());
 
 app.use(`/api/${process.env.API_VERSION}/products`, productsRoutes);
 app.use(`/api/${process.env.API_VERSION}`, ordersRoutes);
