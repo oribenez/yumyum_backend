@@ -90,7 +90,7 @@ export const login = async (req, res, next) => {
 		return next(err);
 	}
 
-	res.json({
+	res.status(200).json({
 		userId: existingUser.id,
 		email: existingUser.email,
 		fullname: existingUser.fullname,
