@@ -47,20 +47,16 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
-	
+
 	if (!existingUser) {
 		// User does not exists
-		const err = new HttpError(
-			"User does not exist, please sign up.",
-			401
-		);
+		const err = new HttpError("User does not exist, please sign up.", 401);
 		return next(err);
 	}
 
 	//  Check if password is correct
 	let isValidPassword = false;
 	try {
-
 		isValidPassword = await bcrypt.compare(password, existingUser.password);
 	} catch (error) {
 		const err = new HttpError(
@@ -78,7 +74,7 @@ export const login = async (req, res, next) => {
 		return next(err);
 	}
 
-    //  Create token
+	//  Create token
 	let token;
 	try {
 		token = jwt.sign(
@@ -94,7 +90,12 @@ export const login = async (req, res, next) => {
 		return next(err);
 	}
 
-	res.json({ userId: existingUser.id, email: existingUser.email, token: token });
+	res.json({
+		userId: existingUser.id,
+		email: existingUser.email,
+		fullname: existingUser.fullname,
+		token: token,
+	});
 };
 
 export const signup = async (req, res, next) => {
@@ -176,9 +177,9 @@ export const signup = async (req, res, next) => {
 	}
 
 	res.status(201).json({
-		message: "Logged in!",
 		userId: createdUser.id,
-        email: createdUser.email,
-        token: token
+		email: createdUser.email,
+		fullname: createdUser.fullname,
+		token: token,
 	});
 };
