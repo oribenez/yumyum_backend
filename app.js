@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 });
 
 //app.use(cors());
-
+app.use(`/api/v1/products`, productsRoutes);
 app.use(`/api/${process.env.API_VERSION}/products`, productsRoutes);
 app.use(`/api/${process.env.API_VERSION}`, ordersRoutes);
 app.use(`/api/${process.env.API_VERSION}`, shippingsRoutes);
