@@ -15,17 +15,17 @@ dotenv.config();
 app.use(express.json());
 
 // Setting CORS Headers to every response of the server
-// app.use((req, res, next) => {
-// 	res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL.toString()); // * => this is the domain
-// 	res.setHeader(
-// 		"Access-Control-Allow-Headers",
-// 		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
-// 	);
-// 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
-// 	next();
-// });
+app.use((req, res, next) => {
+	res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL.toString()); // * => this is the domain
+	res.setHeader(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
+	);
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+	next();
+});
 
-app.use(cors());
+//app.use(cors());
 
 app.use(`/api/${process.env.API_VERSION}/products`, productsRoutes);
 app.use(`/api/${process.env.API_VERSION}`, ordersRoutes);

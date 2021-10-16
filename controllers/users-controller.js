@@ -35,7 +35,6 @@ const getUserByEmail = async (req, res, next) => {
 };
 
 export const login = async (req, res, next) => {
-	console.log('sav login');
 	const { email, password } = req.body;
 	//  Check if user exists
 	let existingUser;
