@@ -74,7 +74,7 @@ export const login = async (req, res, next) => {
 		return next(err);
 	}
 
-	//  Create token 
+	//  Create token  
 	let token;
 	try {
 		token = jwt.sign(
