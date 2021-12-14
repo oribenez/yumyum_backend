@@ -120,7 +120,7 @@ export const signup = async (req, res, next) => {
 		);
 		return next(err);
 	}
-
+ 
 	if (existingUser) {
 		const err = new HttpError(
 			"User already exists, please login instead.",
