@@ -96,7 +96,7 @@ export const login = async (req, res, next) => {
 		fullname: existingUser.fullname,
 		token: token,
 	});
-}; 
+};  
 
 export const signup = async (req, res, next) => {
 	//  Validate req.body params
