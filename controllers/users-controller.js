@@ -128,7 +128,7 @@ export const signup = async (req, res, next) => {
 		);
 		return next(err);
 	}
-
+ 
 	// Encrypt password
 	let hashedPassword;
 	try {
