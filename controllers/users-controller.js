@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import HttpError from "../models/http-error.js";
 import User from "../models/user-schema.js";
 
-export const getUsers = async (req, res, next) => {
+export const getUsers = async (req, res, next) => { 
 	let users;
 	try {
 		users = await User.find({}, "-password"); //    exclude password field from users
