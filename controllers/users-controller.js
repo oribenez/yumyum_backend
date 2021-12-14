@@ -127,8 +127,8 @@ export const signup = async (req, res, next) => {
 			422
 		);
 		return next(err);
-	}
- 
+	} 
+	
 	// Encrypt password
 	let hashedPassword;
 	try {
