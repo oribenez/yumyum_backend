@@ -95,7 +95,7 @@ export const login = async (req, res, next) => {
 		email: existingUser.email,
 		fullname: existingUser.fullname,
 		token: token,
-	}); 
+	});  
 };   
 
 export const signup = async (req, res, next) => {
