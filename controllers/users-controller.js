@@ -47,7 +47,7 @@ export const login = async (req, res, next) => {
 		);
 		return next(err);
 	}
-
+ 
 	if (!existingUser) {
 		// User does not exists
 		const err = new HttpError("User does not exist, please sign up.", 401);
