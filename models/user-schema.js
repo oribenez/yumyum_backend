@@ -9,6 +9,6 @@ const userSchema = new mongoose.Schema({
     phone: String,
 });
 
-userSchema.plugin(uniqueValidator);
+userSchema.plugin(uniqueValidator); 
 
 export default mongoose.model('User', userSchema);
