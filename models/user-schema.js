@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true, minlength: 6 },
     shippingAddress: String,
     phone: String,
-}); 
+});
 
 userSchema.plugin(uniqueValidator); 
 
