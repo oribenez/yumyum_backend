@@ -53,7 +53,7 @@ export const login = async (req, res, next) => {
 		const err = new HttpError("User does not exist, please sign up.", 401);
 		return next(err);
 	}
-
+ 
 	//  Check if password is correct
 	let isValidPassword = false;
 	try {
