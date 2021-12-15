@@ -72,7 +72,7 @@ export const login = async (req, res, next) => {
 			401
 		);
 		return next(err);
-	}
+	} 
    
 	//  Create token  
 	let token;
